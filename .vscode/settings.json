@@ -1,0 +1,14 @@
+{
+    // pylint 적용
+    "python.linting.pylintEnabled": true,
+    "python.linting.enabled": true,
+    //black 적용
+    "python.pythonPath": "C:\\Users\\Jeongran\\AppData\\Local\\Programs\\Python\\Python38\\python.exe",
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--line-length",
+        "100"
+    ],
+    "editor.formatOnSave": true,
+    //
+}
