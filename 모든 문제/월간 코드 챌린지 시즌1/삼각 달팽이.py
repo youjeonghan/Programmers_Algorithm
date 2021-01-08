@@ -40,6 +40,5 @@ def solution(n):
 
     return result
 
-
 n = 6
 print(solution(n))
