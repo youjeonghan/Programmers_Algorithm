@@ -39,7 +39,7 @@ def solution(dartResult):
     return answer
 
 
-# dartResult = "1S2D*3T"
+dartResult = "1S2D*3T"
 # dartResult = "1D2S#10S"
 # dartResult = "1D2S0T"
 # dartResult = "1S*2T*3S"
