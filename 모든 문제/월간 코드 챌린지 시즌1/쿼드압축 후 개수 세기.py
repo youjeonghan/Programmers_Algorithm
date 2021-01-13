@@ -1,5 +1,6 @@
 # 월간 코드 챌린지 시즌1    쿼드압축 후 개수 세기
 def quadtree_last_check(arr):
+    """ 길이가 2인 사각형의 값 """
     one = sum(arr[0]) + sum(arr[1])
     zero = 4 - one
     if one == 4:
