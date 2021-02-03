@@ -8,7 +8,7 @@ def solution(relation):
 
     for i in range(1, len(relation[0]) + 1):
         idx_com = combinations(idx, i)
-        # print(list(idx_com)) # 왜이거찍고하면 오류나지??? list()하고나면 초기화됨;;
+        print(list(idx_com))  # 왜이거찍고하면 오류나지??? list()하고나면 초기화됨;;
         check_key(key_list, idx_com, relation)
 
     print("key_list: ", key_list)
@@ -16,7 +16,7 @@ def solution(relation):
 
 
 def check_key(key_list, idx_com, relation):
-
+    print("idx", list(idx_com))
     for i in idx_com:  # i 는 키후보 컬럼 튜플
         temp = []
         for q in relation:
