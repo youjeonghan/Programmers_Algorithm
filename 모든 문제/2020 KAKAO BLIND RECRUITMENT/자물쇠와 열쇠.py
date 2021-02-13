@@ -5,18 +5,30 @@
 
 
 def solution(key, lock):
-    edge = len(key)
+    edge = len(lock)
     hole = find_holl(lock, edge)
 
+    if len(lock) - len(key) > 0:
+        for i in range(len(key)):
+            for _ in range(len(lock) - len(key)):
+                key[i].append(0)
+        for i in range(len(lock) - len(key)):
+            key.append([0 for _ in range(len(lock))])
+
+    print(key)
+
     # key = rotate(key)
-    for i in range(0, edge):  # 위, 아래 이동키 확인
-        for j in range(0, edge):
+    for i in range(0, edge):  # 위, 아래 이동
+        for j in range(0, edge):  # 좌, 우 이동
             temp = key[:]  # key 얕은복사
+
             for _ in range(i):
                 del temp[0]
                 temp.append([0 for _ in range(edge)])
 
-            temp_r = temp_l = rotate(temp)
+            temp_r = rotate(temp)
+            temp_l = rotate(temp)
+
             for _ in range(j):
                 del temp_l[0]
                 temp_l.append([0 for _ in range(edge)])
@@ -36,7 +48,9 @@ def solution(key, lock):
                 del temp[-1]
                 temp.insert(0, [0 for _ in range(edge)])
 
-            temp_r = temp_l = rotate(temp)
+            temp_r = rotate(temp)
+            temp_l = rotate(temp)
+
             for _ in range(j):
                 del temp_l[0]
                 temp_l.append([0 for _ in range(edge)])
@@ -81,32 +95,39 @@ def find_holl(lock, edge):
 
 def check(key, lock, edge, hole):
     """ key와 lock이 맞는지 체크 """
-    if edge ** 2 == sum(sum(key, [])) + sum(sum(lock, [])):
-        for p in hole:
-            if lock[p[0]][p[1]] == key[p[0]][p[1]]:
-                return False
-    else:
-        return False
 
-    return True
+    if edge ** 2 == sum(sum(key, [])) + sum(sum(lock, [])):  # 칸수 맞음
+        for i in range(4):
+            result = True
+            for p in hole:
+                if lock[p[0]][p[1]] == key[p[0]][p[1]]:
+                    result = False
+                    break
+            if result == True:
+                return True
+
+            key = rotate(key)
+
+    return False
 
 
 """
 입출력 예시
 """
 key = [
-    [0, 0, 0],
-    [1, 0, 0],
-    [0, 1, 1],
+    [1, 1],
+    [1, 1],
 ]
 lock = [
-    [1, 1, 1],
-    [1, 1, 0],
-    [1, 0, 1],
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+    [1, 1, 1, 1],
+    [0, 1, 1, 1],
 ]
 # 답 true
 
 print(solution(key, lock))
 
-
-# print(rotate(key))
+# del key[-1]
+# key.insert(0, [0 for _ in range(3)])
+# print(key)
