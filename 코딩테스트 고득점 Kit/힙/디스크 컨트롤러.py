@@ -1,4 +1,4 @@
-# 2레벨     코딩테스트 고득점 Kit     디스크 컨트롤러
+# 3레벨     코딩테스트 고득점 Kit     디스크 컨트롤러
 import heapq as hq
 from collections import deque
 
@@ -9,7 +9,7 @@ def solution(jobs):
     time = 0
     result = 0
     while deq or heap:
-        while deq and deq[0][0] <= time:
+        if deq and deq[0][0] <= time:
             t = deq.popleft()
             hq.heappush(heap, (t[1], t[0]))
 
