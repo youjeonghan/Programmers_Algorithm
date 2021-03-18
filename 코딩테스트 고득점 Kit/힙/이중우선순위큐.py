@@ -27,22 +27,12 @@ def solution(operations):
                     dic[-n] -= 1
                     break
     max = min = 0
-    while min_h:
-        n = hq.heappop(min_h)
-        if dic[n] != 0:
-            dic[n] -= 1
-            min = n
-            break
-
-    while max_h:
-        n = hq.heappop(max_h)
-        if dic[-n] != 0:
-            dic[-n] -= 1
-            max = -n
-            break
+    min = hq.heappop(min_h)
+    max = hq.heappop(max_h)
 
     return [max, min]
 
 
 if __name__ == "__main__":
-    print(solution(["I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"]))
+    # print(solution(["I -45", "I 653", "D 1", "I -642", "I 45", "I 97", "D 1", "D -1", "I 333"]))
+    print(solution(["I -45"]))
