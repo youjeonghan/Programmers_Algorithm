@@ -1,31 +1,34 @@
-def compress(text, tok_len):
-    words = [text[i:i+tok_len] for i in range(0, len(text), tok_len)]
-    res = []
-    cur_word = words[0]
-    cur_cnt = 1
-    for a, b in zip(words, words[1:] + ['']):
-        if a == b:
-            cur_cnt += 1
-        else:
-            res.append([cur_word, cur_cnt])
-            cur_word = b
-            cur_cnt = 1
-    return sum(len(word) + (len(str(cnt)) if cnt > 1 else 0) for word, cnt in res)
+from sys import stdin
+from math import ceil
 
-def solution(text):
-    return min(compress(text, tok_len) for tok_len in list(range(1, int(len(text)/2) + 1)) + [len(text)])
+read = stdin.readline
+n, k = map(int, read().rstrip().split())
+li = list(map(int, read().rstrip().split()))
+_min = min(li)
 
-a = [
-    "aabbaccc",
-    "ababcdcdababcdcd",
-    "abcabcdede",
-    "abcabcabcabcdededededede",
-    "xababcdcdababcdcd",
+check = len(li)
+for i in li:
+    if i == _min:
+        check -= 1
 
-    'aaaaaa',
-]
+print(ceil(check / (k - 1)))
 
-# for x in a:
-#     print(solution(x))
 
-print(list(range(1, int(len(a)/2) + 1)) + [len(a)])
+# 2번
+# from sys import stdin
+# from math import ceil
+
+# read = stdin.readline
+# t = int(read())
+
+# for _ in range(t):
+#     n, m = map(int, read().split())
+#     sum = n + m
+#     cnt = 0
+#     for i in range(n // 5):
+#         if sum < 12:
+#             break
+#         cnt += 1
+#         sum -= 12
+
+#     print(cnt)
