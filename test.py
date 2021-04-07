@@ -1,34 +1,23 @@
-from sys import stdin
-from math import ceil
+def solution(N, number):
+    S = [0, {N}]
+    for i in range(2, 9):
+        case_set = {int(str(N) * i)}
+        for i_half in range(1, i // 2 + 1):  # S[i_half] S[1]
+            for x in S[i_half]:
+                for y in S[i - i_half]:
+                    case_set.add(x + y)
+                    case_set.add(x - y)
+                    case_set.add(y - x)  # y-x 케이스 추가
+                    case_set.add(x * y)
+                    if x != 0:
+                        case_set.add(y // x)
+                    if y != 0:
+                        case_set.add(x // y)
+        if number in case_set:
+            print(S)
+            return i
+        S.append(case_set)
+    return -1
 
-read = stdin.readline
-n, k = map(int, read().rstrip().split())
-li = list(map(int, read().rstrip().split()))
-_min = min(li)
 
-check = len(li)
-for i in li:
-    if i == _min:
-        check -= 1
-
-print(ceil(check / (k - 1)))
-
-
-# 2번
-# from sys import stdin
-# from math import ceil
-
-# read = stdin.readline
-# t = int(read())
-
-# for _ in range(t):
-#     n, m = map(int, read().split())
-#     sum = n + m
-#     cnt = 0
-#     for i in range(n // 5):
-#         if sum < 12:
-#             break
-#         cnt += 1
-#         sum -= 12
-
-#     print(cnt)
+print(solution(4, 19))
