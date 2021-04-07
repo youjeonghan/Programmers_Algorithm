@@ -1,6 +1,4 @@
 # 3레벨     코딩테스트 고득점 Kit     N으로 표현
-# 다시
-# 못 풀어서 풀이봄
 from collections import defaultdict
 
 
