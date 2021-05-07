@@ -1,8 +1,6 @@
-def reverse(st):
-    result = ""
-    for i in st:
-        result += "(" if i == ")" else ")"
-    return result
+s = set()
+s.add(-1)
+s.add(2)
+s.add(1)
 
-
-print(reverse(")("))
+print(s)

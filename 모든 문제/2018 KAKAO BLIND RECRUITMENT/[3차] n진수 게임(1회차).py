@@ -1,4 +1,5 @@
 # 2018 KAKAO BLIND RECRUITMENT      [3차] n진수 게임
+# 틀린거임
 def solution(n, t, m, p):
     answer = ""
     result = ""
