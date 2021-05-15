@@ -1,6 +1,5 @@
-s = set()
-s.add(-1)
-s.add(2)
-s.add(1)
+a = "123"
+b = "abc"
 
-print(s)
+for q, w in zip(a, b):
+    print(q, w)

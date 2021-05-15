@@ -1,5 +1,4 @@
 # 2019 카카오 개발자 겨울 인턴십    불량 사용자
-# 5번 시간초과 나옴
 from itertools import product, combinations
 
 
