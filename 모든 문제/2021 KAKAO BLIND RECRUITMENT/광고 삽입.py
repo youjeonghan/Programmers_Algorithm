@@ -15,6 +15,11 @@ def solution(play_time, adv_time, logs):
         e = int(e[0]) * 60 * 60 + int(e[1]) * 60 + int(e[2])
         return s, e
 
+    def time_to_str(time):
+        h, time = divmod(time, 60 * 60)
+        m, s = divmod(time, 60)
+        return f"{h:02d}:{m:02d}:{s:02d}"
+
     end_time = time_check(play_time)
     adv_len = time_check(adv_time)
     dp = [0] * (end_time + 1)
@@ -24,23 +29,25 @@ def solution(play_time, adv_time, logs):
         dp[s] += 1
         dp[e] -= 1
 
-    state = 0  # 현재 보는 시청수
-    time = 0
-    s, e = 0, 0
+    for i in range(1, end_time + 1):
+        dp[i] += dp[i - 1]
+
+    state = 0  # 현재 시간대 누적 시청수
+    s, e = 0, -1
     result = [0, 0]  # 시작시간, 누적재생시간
-    print(time_check("00:14:15"))
-    while e <= end_time:
-        while e <= end_time and e - s < adv_len:
-            state += dp[e]
-            time += state
+    while s <= end_time and e <= end_time:
+        while e + 1 <= end_time and e + 1 - s < adv_len:
             e += 1
-            if time > result[1]:
+
+            state += dp[e]
+
+            if state > result[1]:
                 result[0] = s
-                result[1] = time
+                result[1] = state
+        state -= dp[s]
         s += 1
 
-    print(result)
-    print(time_check("01:30:59"))
+    return time_to_str(result[0])
 
 
 if __name__ == "__main__":
