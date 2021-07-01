@@ -1,4 +1,4 @@
-# 2020 KAKAO BLIND RECRUITMENT  순위 검색
+# 2021 KAKAO BLIND RECRUITMENT  순위 검색
 from collections import defaultdict
 from bisect import bisect_left
 
