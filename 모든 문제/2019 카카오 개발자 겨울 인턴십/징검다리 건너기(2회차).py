@@ -1,4 +1,5 @@
 # 2019 카카오 개발자 겨울 인턴십    징검다리 건너기
+# 2회차
 # 다시 (효율성 통과 못함)
 from collections import deque
 
