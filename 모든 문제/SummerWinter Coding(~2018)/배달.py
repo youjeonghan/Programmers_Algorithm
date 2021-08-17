@@ -1,4 +1,4 @@
-from collections import defaultdict, deque
+from collections import defaultdict
 import heapq as hq
 
 
@@ -19,11 +19,7 @@ def solution(N, road, K):
                 gp[e] = cur_dis + w
                 hq.heappush(que, (gp[e], e))
 
-    cnt = 0
-    for i in gp:
-        if i <= K:
-            cnt += 1
-    return cnt
+    return len(list(filter(lambda x: x <= K, gp)))
 
 
 if __name__ == "__main__":
