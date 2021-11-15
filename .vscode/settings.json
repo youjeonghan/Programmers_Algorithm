@@ -1,4 +1,6 @@
 {
+    //
+    "python.pythonPath": "programmers_algorithm\\Scripts\\python.exe",
     // pylint 적용
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
@@ -9,5 +11,6 @@
     ],
     "editor.formatOnSave": true,
     //
-    "terminal.integrated.shell.windows": "cmd.exe"
+    "terminal.integrated.shell.windows": "cmd.exe",
+
 }
