@@ -1,8 +1,6 @@
-def solution(numbers):
-    str = "123"
-    str[2] = "1"
-    return str
+def oddNumbers(l, r):
+    return [i for i in range(l, r + 1) if i % 2 == 1]
 
 
 if __name__ == "__main__":
-    print(solution([3]))
+    print(oddNumbers(2, 5))
