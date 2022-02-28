@@ -1,49 +1,31 @@
+# 레벨2     Summer/Winter Coding(~2018)     방문 길이
+# 19분 40초 소요
+
 from collections import defaultdict
 
 
 def solution(dirs):
-    dic = defaultdict(set)
-
+    y, x = 0, 0
     cnt = 0
-    me = [0, 0]
+    check = defaultdict(lambda: defaultdict(lambda: 0))
     for i in dirs:
-
-        # print(cnt, (me[0], me[1]), dic[(me[0], me[1])])
-
-        if i not in dic[(me[0], me[1])]:
-            if i == "U" and me[0] == 5:
-                pass
-            elif i == "D" and me[0] == -5:
-                pass
-            elif i == "R" and me[1] == 5:
-                pass
-            elif i == "L" and me[1] == -5:
-                pass
-            else:
-                cnt += 1
-                
-        dic[(me[0], me[1])].add(i)
-
         if i == "U":
-            v = "D"
-            if me[0] != 5:
-                me[0] += 1
+            dy, dx = y - 1, x
         elif i == "D":
-            v = "U"
-            if me[0] != -5:
-                me[0] -= 1
-        elif i == "R":
-            v = "L"
-            if me[1] != 5:
-                me[1] += 1
+            dy, dx = y + 1, x
         elif i == "L":
-            v = "R"
-            if me[1] != -5:
-                me[1] -= 1
-        dic[(me[0], me[1])].add(v)
+            dy, dx = y, x - 1
+        elif i == "R":
+            dy, dx = y, x + 1
+
+        if -5 <= dy <= 5 and -5 <= dx <= 5:
+            if check[(y, x)][(dy, dx)] == 0:
+                cnt += 1
+                check[(y, x)][(dy, dx)] = 1
+                check[(dy, dx)][(y, x)] = 1
+            y, x = dy, dx
     return cnt
 
 
 if __name__ == "__main__":
-    print(solution("LLLLLLLLLUD"))
-    # print(solution("LULLLLLLU"))
+    print(solution("UD"))
